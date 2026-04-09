@@ -1,0 +1,14 @@
+emulator:
+  provider: ldplayer
+  adb_path: adb
+  adb_serial: 127.0.0.1:5555
+  profile: ldplayer_1280x720
+  resolution:
+    width: 1280
+    height: 720
+  dpi: 240
+  app_package: com.example.tlbb
+  launch_activity:
+  restart_on_failure: true
+  connect_timeout_sec: 10
+

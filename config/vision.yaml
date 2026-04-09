@@ -1,0 +1,63 @@
+vision:
+  template_dir: ./src/games/tlbb/templates
+  min_confidence: 0.8
+  ocr_enabled: true
+  ocr_languages: eng
+  templates:
+    - name: home_minimap
+      screen: HOME_SCREEN
+      file: ldplayer_1280x720/home_minimap.png
+      threshold: 0.9
+      search_region: [1010, 24, 1270, 280]
+      profile: ldplayer_1280x720
+      version: 1
+    - name: home_menu
+      screen: HOME_SCREEN
+      file: ldplayer_1280x720/home_menu.png
+      threshold: 0.9
+      search_region: [920, 520, 1270, 720]
+      profile: ldplayer_1280x720
+      version: 1
+    - name: reward_entry
+      screen: HOME_SCREEN
+      file: ldplayer_1280x720/reward_entry.png
+      threshold: 0.88
+      search_region: [760, 120, 1270, 400]
+      profile: ldplayer_1280x720
+      version: 1
+    - name: reward_claim_all
+      screen: REWARD_SCREEN
+      file: ldplayer_1280x720/reward_claim_all.png
+      threshold: 0.88
+      search_region: [820, 520, 1270, 720]
+      profile: ldplayer_1280x720
+      version: 1
+    - name: mail_entry
+      screen: HOME_SCREEN
+      file: ldplayer_1280x720/mail_entry.png
+      threshold: 0.88
+      search_region: [760, 120, 1270, 400]
+      profile: ldplayer_1280x720
+      version: 1
+    - name: mail_claim_all
+      screen: MAIL_SCREEN
+      file: ldplayer_1280x720/mail_claim_all.png
+      threshold: 0.88
+      search_region: [820, 520, 1270, 720]
+      profile: ldplayer_1280x720
+      version: 1
+    - name: popup_close
+      screen: POPUP_SCREEN
+      file: ldplayer_1280x720/popup_close.png
+      threshold: 0.9
+      search_region: [860, 40, 1260, 220]
+      profile: ldplayer_1280x720
+      version: 1
+    - name: loading_spinner
+      screen: LOADING_SCREEN
+      file: ldplayer_1280x720/loading_spinner.png
+      threshold: 0.86
+      search_region: [500, 250, 780, 470]
+      profile: ldplayer_1280x720
+      version: 1
+

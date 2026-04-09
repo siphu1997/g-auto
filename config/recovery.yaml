@@ -1,0 +1,9 @@
+recovery:
+  detect_retry: 3
+  action_retry: 2
+  state_timeout_sec: 20
+  loading_timeout_sec: 60
+  recovery_timeout_sec: 60
+  restart_app_after_failures: 3
+  restart_emulator_after_failures: 5
+

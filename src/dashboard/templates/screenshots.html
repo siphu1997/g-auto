@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="panel">
+    <h1>Screenshots</h1>
+    {% if latest %}
+      <img class="screenshot" src="/screenshots/latest" alt="Latest screenshot">
+      <p class="muted">{{ latest }}</p>
+    {% else %}
+      <p class="muted">No screenshot captured yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}
+

@@ -1,0 +1,20 @@
+tasks:
+  launch:
+    enabled: true
+    max_duration_sec: 180
+  claim_reward:
+    enabled: true
+    max_duration_sec: 120
+  claim_mail:
+    enabled: true
+    max_duration_sec: 120
+  daily:
+    enabled: false
+    max_duration_sec: 600
+  quest:
+    enabled: false
+    max_duration_sec: 900
+  train:
+    enabled: false
+    max_duration_sec: 1800
+

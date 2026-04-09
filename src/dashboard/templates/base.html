@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f3f5f7;
+        --panel: #ffffff;
+        --border: #d9e0e6;
+        --text: #17212b;
+        --muted: #5d6975;
+        --accent: #0f6cbd;
+        --accent-soft: #dbeafe;
+        --danger: #b42318;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #eef4ff 0%, var(--bg) 100%);
+        color: var(--text);
+      }
+      header {
+        padding: 20px 28px;
+        background: #0f172a;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      nav a {
+        color: white;
+        margin-right: 14px;
+        text-decoration: none;
+      }
+      main {
+        padding: 24px 28px 40px;
+        display: grid;
+        gap: 20px;
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .label {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+      .value {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 10px 16px;
+        background: var(--accent);
+        color: white;
+        cursor: pointer;
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+      button.secondary {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+      button.danger {
+        background: #fee4e2;
+        color: var(--danger);
+      }
+      pre {
+        margin: 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border);
+      }
+      img.screenshot {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+      .muted {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <strong>TLBB Automation</strong>
+        <div class="muted">Windows-first local operator console</div>
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/logs/view">Logs</a>
+        <a href="/screenshots/view">Screenshots</a>
+        <a href="/tasks/view">Tasks</a>
+        <a href="/config/view">Config</a>
+      </nav>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
+

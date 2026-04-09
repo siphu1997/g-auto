@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="panel">
+    <h1>Runtime Status</h1>
+    <div class="grid">
+      <div>
+        <div class="label">Running</div>
+        <div class="value">{{ status.running }}</div>
+      </div>
+      <div>
+        <div class="label">Current State</div>
+        <div class="value">{{ status.current_state }}</div>
+      </div>
+      <div>
+        <div class="label">Current Task</div>
+        <div class="value">{{ status.current_task or "idle" }}</div>
+      </div>
+      <div>
+        <div class="label">Emulator Online</div>
+        <div class="value">{{ status.emulator_online }}</div>
+      </div>
+      <div>
+        <div class="label">Run ID</div>
+        <div class="value">{{ status.run_id or "-" }}</div>
+      </div>
+      <div>
+        <div class="label">Recovery Level</div>
+        <div class="value">{{ status.recovery_level }}</div>
+      </div>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>Controls</h2>
+    <form method="post" action="/bot/start"><button type="submit">Start Bot</button></form>
+    <form method="post" action="/bot/restart"><button type="submit" class="secondary">Restart Bot</button></form>
+    <form method="post" action="/bot/stop"><button type="submit" class="danger">Stop Bot</button></form>
+    <form method="post" action="/config/reload"><button type="submit" class="secondary">Reload Config</button></form>
+  </section>
+  <section class="panel">
+    <h2>Latest Screenshot</h2>
+    {% if status.latest_screenshot %}
+      <img class="screenshot" src="/screenshots/latest" alt="Latest screenshot">
+    {% else %}
+      <p class="muted">No screenshot captured yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="panel">
+    <h1>Tasks</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Enabled</th>
+          <th>Max Duration</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+          <tr>
+            <td>{{ task.name }}</td>
+            <td>{{ task.enabled }}</td>
+            <td>{{ task.max_duration_sec }}</td>
+            <td>
+              <form method="post" action="/tasks/run">
+                <input type="hidden" name="task" value="{{ task.name }}">
+                <button type="submit" {% if not task.enabled %}disabled{% endif %}>Run</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% endblock %}
+

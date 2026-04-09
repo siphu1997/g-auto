@@ -1,34 +1,64 @@
 # TLBB Automation Framework
 
-Framework automation cho game mobile trên Android emulator, thiết kế theo hướng ổn định, dễ debug, dễ mở rộng.
+Windows-first automation framework for TLBB on `LDPlayer 9`, built around a Python worker, a local FastAPI dashboard, ADB device control, and template-first UI recognition.
 
-## Scope v1
-- Emulator: LDPlayer 9
-- Platform: Windows
-- Mode: 1 account / 1 instance
-- Recognition: template matching + OCR fallback
+## MVP Scope
+- Emulator: `LDPlayer 9`
+- Platform: `Windows`
+- Mode: `1 account / 1 instance`
+- Recognition: template matching with OCR fallback
 - Runtime: background worker + local dashboard
-- Flows: launch, reward, mail, daily, quest, basic train
+- Implemented task scope: `launch`, `claim_reward`, `claim_mail`
 
-## Core principles
-- Stability first
-- Image recognition first, OCR second
-- Deterministic state machine
-- Retry + timeout + recovery everywhere
-- Rich logs + screenshots for debugging
+## Architecture
+- `apps/api`: FastAPI entrypoint for JSON endpoints and local HTML dashboard
+- `apps/worker`: CLI entrypoint for starting the background worker
+- `src/core`: config, logging, device, vision, state machine, recovery, runtime
+- `src/games/tlbb`: TLBB-specific screen signatures, task rules, and template profile metadata
+- `src/dashboard/templates`: server-rendered dashboard pages
+- `config`: YAML config files
+- `tests`: unit and integration coverage with mocked device and vision fixtures
 
-## Suggested repository structure
-```text
-tlbb-auto/
-├─ README.md
-├─ apps/
-├─ src/
-├─ config/
-├─ data/
-├─ docs/
-├─ scripts/
-└─ tests/
+## Quick Start
+```bash
+uv venv
+uv pip install -e ".[dev]"
+uv run uvicorn apps.api.main:app --reload
 ```
+
+Worker CLI:
+```bash
+uv run python -m apps.worker.main
+```
+
+## Dashboard and API
+- Home: `/`
+- Logs: `/logs/view`
+- Screenshots: `/screenshots/view`
+- Tasks: `/tasks/view`
+- Config: `/config/view`
+
+Core API:
+- `GET /health`
+- `GET /status`
+- `GET /logs`
+- `GET /screenshots/latest`
+- `POST /bot/start`
+- `POST /bot/stop`
+- `POST /bot/restart`
+- `POST /tasks/run`
+- `POST /config/reload`
+
+## Config Files
+- `config/app.yaml`
+- `config/emulator.yaml`
+- `config/bot.yaml`
+- `config/tasks.yaml`
+- `config/vision.yaml`
+- `config/recovery.yaml`
+- `config/schedules.yaml`
+
+`config/vision.yaml` ships with placeholder template metadata only. Real gameplay usage still requires capturing and storing actual template assets under `src/games/tlbb/templates/<profile>/`.
 
 ## Documentation
 - [docs/00-overview.md](docs/00-overview.md)
@@ -44,16 +74,4 @@ tlbb-auto/
 - [docs/10-testing-strategy.md](docs/10-testing-strategy.md)
 - [docs/11-deployment-and-ops.md](docs/11-deployment-and-ops.md)
 - [docs/12-roadmap.md](docs/12-roadmap.md)
-
-## Suggested next steps
-1. Khởi tạo repo skeleton theo cấu trúc tài liệu
-2. Implement device layer trước
-3. Capture dataset cho recognition
-4. Build screen classifier
-5. Build state machine + recovery
-6. Implement launch/reward/mail trước rồi mới mở rộng
-
-## Notes
-- Nên khóa resolution và DPI ngay từ đầu
-- Không nên hỗ trợ nhiều emulator ở phase đầu
-- Không nên dựa hoàn toàn vào OCR
+- [docs/implementation-plan.md](docs/implementation-plan.md)

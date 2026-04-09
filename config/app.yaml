@@ -1,0 +1,7 @@
+app:
+  env: local
+  debug: true
+  log_level: INFO
+  data_dir: ./data
+  log_file: ./data/logs/bot.jsonl
+

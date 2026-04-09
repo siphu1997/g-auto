@@ -1,0 +1,8 @@
+bot:
+  tick_interval_ms: 1200
+  screenshot_interval_ms: 1500
+  verify_after_action: true
+  save_debug_screenshots: true
+  action_delay_ms: 700
+  max_unknown_retries: 3
+
